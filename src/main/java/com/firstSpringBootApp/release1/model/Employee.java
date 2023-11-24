@@ -31,12 +31,14 @@ public class Employee {
 		this.team = team;
 	}
 	
-	public Employee(String name, int age, String designation, String team) {
-		super();
-		this.name = name;
-		this.age = age;
-		this.designation = designation;
-		this.team = team;
+
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Long getId() {
+		return id;
 	}
 
 	public String getName() {
@@ -64,12 +66,13 @@ public class Employee {
 		this.team = team;
 	}
 
-	@Override
-	public String toString() {
-		return "Employee [name=" + name + ", age=" + age + ", designation=" + designation + ", team=" + team + "]";
-	}
-	
 	  @Override
+	public String toString() {
+		return "Employee [id=" + id + ", name=" + name + ", age=" + age + ", designation=" + designation + ", team="
+				+ team + "]";
+	}
+
+	@Override
 	    public boolean equals(Object obj) {
 	        if (this == obj) {
 	            return true;

@@ -1,14 +1,10 @@
 package com.firstSpringBootApp.release1.controller;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Stream;
-
-import java.util.Iterator;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,7 +20,7 @@ public class ReleaseOneController {
 	EmployeeService employeeService;
 	
 	
-	@RequestMapping(value="/employee", method=RequestMethod.GET)	
+	@RequestMapping(value="/allemployee", method=RequestMethod.GET)	
 	public List<Employee> getEmployee() {			
 		return  employeeService.getAllEmployees();
 	}
@@ -35,5 +31,25 @@ public class ReleaseOneController {
 		return "Employee added successfully";
 	}
 	
+	@RequestMapping(value="/employee/{name}", method=RequestMethod.GET)	
+	public List<Employee> getEmployee1(@PathVariable String name) {
+		return employeeService.getEmployeeByName(name);
+	}
+	
+	@RequestMapping(value="/employee/{id}", method=RequestMethod.DELETE)
+	public String deleteEmployee(@PathVariable long id)
+	{
+		employeeService.deleteEmployee(id);
+		return "Employee deleted successfully";
+	}
+	
+	@PutMapping(value="/employee/{empName}")
+	public String updateCompany(@PathVariable String empName,@RequestBody Employee employee)
+	{
+		employeeService.updateCompany(empName, employee);
+		return "Employee Updated Successfully";
+	}
+	
+
 	
 }
