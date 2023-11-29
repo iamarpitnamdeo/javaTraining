@@ -1,7 +1,11 @@
 package com.firstSpringBootApp.release1.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
 public class Product {
-	
+	@Id
 	private String id;
 	private String name;
 	public String getId() {
@@ -24,5 +28,11 @@ public class Product {
 	public Product() {
 		super();
 	}
+	
+	@Override
+	public String toString() {
+		return "Product [id=" + id + ", name=" + name + "]";
+	}
+	
 	
 }
